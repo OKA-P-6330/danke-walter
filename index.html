@@ -8,196 +8,98 @@
 <meta property="og:title" content="Danke! – 46 Jahre Obrecht Waagen">
 <meta property="og:description" content="Tippe auf OK und drucke deine persönliche Etikette.">
 <meta property="og:image" content="img/walter.jpg">
-<meta name="theme-color" content="#e9edf1">
-<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='6' fill='%23fff'/%3E%3Crect x='17' y='6' width='11' height='3' fill='%23EF2B2F'/%3E%3Crect x='4' y='9' width='11' height='3' fill='%23EF2B2F'/%3E%3Ctext x='16' y='27' font-family='Arial' font-weight='900' font-size='15' text-anchor='middle' fill='%231F1F1D'%3EO%3C/text%3E%3C/svg%3E">
+<meta name="theme-color" content="#eceff2">
+<link rel="icon" href="img/logo.png">
 <style>
-  :root{
-    --red:#EF2B2F; --ink:#1F1F1D; --w:min(92vw, 420px);
-    --bg1:#f3f5f7; --bg2:#dfe5ea;
-    --steel1:#f7f9fa; --steel2:#c9d0d6; --steel3:#9aa3ab;
-    --body1:#ffffff; --body2:#e8ecef; --body3:#cfd5da;
-    --anth:#2b3138;
-    --ok:#1f9d55;
-  }
+  :root{ --red:#EF2B2F; --ink:#1F1F1D; --w:min(94vw, 440px); }
   *{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
   html,body{margin:0}
   body{
     min-height:100svh;
     font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif;
     color:var(--ink);
-    background:
-      radial-gradient(120% 60% at 50% 0%, #fff 0%, transparent 60%),
-      linear-gradient(180deg,var(--bg1),var(--bg2));
+    background:radial-gradient(130% 70% at 50% 0%,#fff 0%,#f1f3f5 45%,#dde3e8 100%);
     overflow-x:hidden;
   }
-  main{width:var(--w);margin:0 auto;padding:max(18px,env(safe-area-inset-top)) 0 calc(48px + env(safe-area-inset-bottom))}
-
-  .hint{
-    text-align:center;font-size:15px;line-height:1.35;color:#4a545d;margin:6px 8px 16px;
-    transition:opacity .4s;
-  }
+  main{width:var(--w);margin:0 auto;padding:max(16px,env(safe-area-inset-top)) 0 calc(48px + env(safe-area-inset-bottom))}
+  .hint{text-align:center;font-size:15px;line-height:1.35;color:#4a545d;margin:4px 8px 14px;transition:opacity .4s}
   .hint b{color:var(--ink)}
   .hint.hide{opacity:0}
 
-  /* ---------- Waage ---------- */
-  .scale{position:relative;display:flex;flex-direction:column;align-items:center}
+  /* ================= Waage (Bizerba KH II 800 Pro) ================= */
+  .scale{position:relative;width:100%;aspect-ratio:360/420}
+  .scale > svg.body{position:absolute;inset:0;width:100%;height:100%;display:block;overflow:visible}
+  .pos{position:absolute}
 
-  .tower{
-    width:100%;position:relative;z-index:3;
-    padding:9px;border-radius:18px;
-    background:linear-gradient(160deg,#3a424a,#14181c 70%);
-    box-shadow:0 1px 0 #59626b inset, 0 18px 30px -18px rgba(0,0,0,.55), 0 2px 4px rgba(0,0,0,.25);
-  }
+  /* Touch-Display (Glas: x8 y20 w252 h188 im 360×420-Raster) */
   .screen{
-    position:relative;border-radius:10px;overflow:hidden;
-    aspect-ratio:4/3.15;background:#f2f4f6;
-    display:flex;flex-direction:column;
-    font-variant-numeric:tabular-nums;
+    left:2.222%;top:4.762%;width:70%;height:44.762%;
+    border-radius:2px;overflow:hidden;background:#f3f5f7;
+    display:grid;grid-template-rows:auto auto auto minmax(0,1fr) auto;
+    container-type:size;font-variant-numeric:tabular-nums;z-index:2;
   }
-  .screen::after{ /* Glas-Reflex */
-    content:"";position:absolute;inset:0;pointer-events:none;
-    background:linear-gradient(125deg,rgba(255,255,255,.28) 0%,rgba(255,255,255,0) 38%);
-  }
-  .s-bar{
-    display:flex;align-items:center;justify-content:space-between;
-    background:#fff;padding:5px 9px;border-bottom:1px solid #dde2e6;
-    font-size:11px;color:#6b757e;
-  }
-  .s-bar svg{height:15px;width:auto;display:block}
-  .s-main{
-    background:linear-gradient(180deg,#203246,#16222f);color:#fff;
-    padding:8px 10px 9px;display:grid;grid-template-columns:1fr auto;gap:2px 10px;align-items:end;
-  }
-  .s-art{grid-column:1/-1;font-size:13px;font-weight:600;color:#cfe0f0;display:flex;align-items:center;gap:6px;white-space:nowrap;overflow:hidden}
-  .stable{display:inline-block;font-size:10px;padding:1px 5px;border-radius:4px;background:#34495e;color:#7f93a6;transition:.3s}
+  .screen::after{content:"";position:absolute;inset:0;pointer-events:none;background:linear-gradient(118deg,rgba(255,255,255,.22) 0%,rgba(255,255,255,0) 34%)}
+  .s-bar{display:flex;align-items:center;justify-content:space-between;background:#fff;padding:1.2cqw 3cqw;border-bottom:1px solid #dde2e6;font-size:4.2cqw;color:#6b757e}
+  .s-bar img{height:5.6cqw;width:auto;display:block}
+  .s-main{background:linear-gradient(180deg,#203246,#16222f);color:#fff;padding:1.6cqw 3.4cqw 1.6cqw;display:grid;grid-template-columns:1fr auto;gap:0 3cqw;align-items:end}
+  .s-art{grid-column:1/-1;font-size:4.2cqw;font-weight:600;color:#cfe0f0;display:flex;align-items:center;gap:2cqw;white-space:nowrap;overflow:hidden}
+  .stable{font-size:3.6cqw;padding:.2cqw 1.6cqw;border-radius:1.4cqw;background:#34495e;color:#7f93a6;transition:.3s}
   .stable.on{background:#2ecc71;color:#0d2a18}
-  .s-weight{font-size:clamp(34px,11vw,48px);font-weight:700;letter-spacing:.5px;line-height:1;font-family:ui-monospace,"SF Mono",Menlo,Consolas,monospace}
-  .s-unit{font-size:14px;color:#9fb6cc;padding-bottom:5px}
-  .s-row{
-    display:grid;grid-template-columns:1fr 1fr;background:#0f1822;color:#fff;font-size:11px;
-  }
-  .s-row div{padding:5px 10px 6px;border-right:1px solid #22303d}
+  .s-weight{font-size:12.5cqw;font-weight:700;line-height:1;font-family:ui-monospace,"SF Mono",Menlo,Consolas,monospace;letter-spacing:.3cqw}
+  .s-unit{font-size:5cqw;color:#9fb6cc;padding-bottom:1.4cqw}
+  .s-row{display:grid;grid-template-columns:1fr 1fr;background:#0f1822;color:#fff}
+  .s-row div{padding:1cqw 3.4cqw 1.2cqw;border-right:1px solid #22303d}
   .s-row div:last-child{border:0}
-  .s-row small{display:block;color:#7f93a6;font-size:9.5px;text-transform:uppercase;letter-spacing:.6px}
-  .s-row strong{font-size:14px}
-  .s-tiles{
-    flex:1;display:grid;grid-template-columns:repeat(4,1fr);gap:6px;padding:7px;
-  }
-  .tile{
-    border:0;border-radius:8px;background:#fff;box-shadow:0 1px 2px rgba(0,0,0,.12);
-    font:inherit;font-size:10.5px;color:#36414b;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:2px;padding:4px 2px;cursor:pointer;
-  }
-  .tile span{font-size:22px;line-height:1}
+  .s-row small{display:block;color:#7f93a6;font-size:3cqw;text-transform:uppercase;letter-spacing:.2cqw}
+  .s-row strong{font-size:4.4cqw}
+  .s-tiles{display:grid;grid-template-columns:repeat(4,1fr);gap:2cqw;padding:2.2cqw 2.2cqw 0;min-height:0}
+  .tile{border:0;border-radius:2.6cqw;background:#fff;box-shadow:0 1px 2px rgba(0,0,0,.14);font:inherit;font-size:3.7cqw;color:#36414b;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:.6cqw;padding:1cqw;cursor:pointer;min-height:0}
+  .tile .ic{height:7.5cqw;display:flex;align-items:center;font-size:7cqw;line-height:1}
+  .tile .ic img{height:100%;width:auto;display:block}
   .tile.sel{outline:2px solid #2f80ed;background:#eaf2fe}
   .tile:active{transform:scale(.96)}
-  .s-actions{display:flex;gap:7px;padding:0 7px 7px}
-  .s-actions .c{
-    flex:0 0 26%;border:0;border-radius:9px;background:#d9dee3;color:#56616b;font:inherit;font-weight:700;font-size:15px;
-  }
-  .ok{
-    flex:1;border:0;border-radius:9px;cursor:pointer;
-    background:linear-gradient(180deg,#27b465,#1b8a4b);color:#fff;
-    font:inherit;font-weight:800;font-size:22px;letter-spacing:1px;padding:10px 0;
-    box-shadow:0 3px 0 #136b39,0 6px 14px -4px rgba(31,157,85,.7);
-    position:relative;
-  }
-  .ok:active{transform:translateY(2px);box-shadow:0 1px 0 #136b39}
+  .s-actions{display:flex;gap:2cqw;padding:2cqw}
+  .s-actions .c{flex:0 0 24%;border:0;border-radius:2.6cqw;background:#d9dee3;color:#56616b;font:inherit;font-weight:700;font-size:5.4cqw}
+  .ok{flex:1;border:0;border-radius:2.6cqw;cursor:pointer;background:linear-gradient(180deg,#27b465,#1b8a4b);color:#fff;font:inherit;font-weight:800;font-size:6.6cqw;letter-spacing:.4cqw;padding:1.6cqw 0;box-shadow:0 .9cqw 0 #136b39;position:relative}
+  .ok:active{transform:translateY(.6cqw);box-shadow:0 .3cqw 0 #136b39}
   .ok[disabled]{filter:grayscale(.6) brightness(.95);cursor:default}
-  .ok.pulse::before{
-    content:"";position:absolute;inset:-4px;border-radius:12px;border:3px solid #27b465;
-    animation:ring 1.6s ease-out infinite;
-  }
-  @keyframes ring{0%{opacity:.9;transform:scale(.96)}100%{opacity:0;transform:scale(1.12)}}
-  .s-status{
-    position:absolute;left:0;right:0;bottom:0;padding:9px;text-align:center;font-weight:700;font-size:14px;
-    background:#203246;color:#fff;transform:translateY(100%);transition:transform .3s;
-  }
+  .ok.pulse::before{content:"";position:absolute;inset:-1.2cqw;border-radius:3.6cqw;border:.9cqw solid #27b465;animation:ring 1.6s ease-out infinite}
+  @keyframes ring{0%{opacity:.9;transform:scale(.96)}100%{opacity:0;transform:scale(1.1)}}
+  .s-status{position:absolute;left:0;right:0;bottom:0;padding:3.4cqw;text-align:center;font-weight:700;font-size:5.2cqw;background:#203246;color:#fff;transform:translateY(100%);transition:transform .3s}
   .s-status.show{transform:none}
+  .s-prog{position:absolute;left:0;bottom:0;height:1.2cqw;background:#2ecc71;width:0}
 
-  .neck{
-    width:24%;height:40px;margin-top:-2px;z-index:2;
-    background:linear-gradient(90deg,var(--body3),var(--body1) 40%,var(--body2) 70%,var(--body3));
-    border-radius:0 0 4px 4px;
-  }
+  /* Lindor auf der Wägeplatte */
+  .lindor{left:22%;width:46%;height:auto;bottom:19.6%;z-index:1;filter:drop-shadow(0 5px 4px rgba(0,0,0,.3));transform:translateY(-140vh)}
+  .lindor.drop{animation:drop 1s cubic-bezier(.3,0,.6,1) forwards}
+  @keyframes drop{0%{transform:translateY(-140vh) rotate(-30deg)}70%{transform:translateY(0) rotate(0)}82%{transform:translateY(-8px) rotate(3deg)}100%{transform:translateY(0) rotate(0)}}
 
-  .deck{position:relative;width:100%;z-index:2;display:flex;flex-direction:column;align-items:center}
-  .plate{position:relative;width:100%;display:flex;justify-content:center}
-  .platter{
-    position:relative;width:86%;height:38px;
-    background:
-      repeating-linear-gradient(90deg,rgba(255,255,255,.18) 0 2px,transparent 2px 5px),
-      linear-gradient(180deg,var(--steel1),var(--steel2) 70%,var(--steel3));
-    clip-path:polygon(7% 0,93% 0,100% 100%,0 100%);
-  }
-  .platter-edge{width:88%;height:7px;background:linear-gradient(180deg,#b7bfc6,#7d868e);border-radius:0 0 3px 3px}
-  .box{
-    position:absolute;left:50%;bottom:9px;width:30%;aspect-ratio:2.9/1;translate:-50% 0;z-index:3;
-    transform:translateY(-140vh);
-  }
-  .box.drop{animation:drop .9s cubic-bezier(.3,.0,.6,1) forwards}
-  @keyframes drop{
-    0%{transform:translateY(-140vh)}
-    70%{transform:translateY(0)}
-    80%{transform:translateY(-10px) rotate(-1deg)}
-    100%{transform:translateY(0)}
-  }
-  .box .lid{
-    position:absolute;inset:0;border-radius:5px;
-    background:linear-gradient(160deg,#5a2e1c,#3a1b10);
-    box-shadow:0 8px 10px -6px rgba(0,0,0,.5), inset 0 1px 0 rgba(255,255,255,.18);
-  }
-  .box .rib-v{position:absolute;top:0;bottom:0;left:50%;width:12%;translate:-50% 0;background:linear-gradient(90deg,#c91d22,var(--red),#c91d22)}
-  .box .rib-h{position:absolute;left:0;right:0;top:50%;height:16%;translate:0 -50%;background:linear-gradient(180deg,#c91d22,var(--red),#c91d22)}
-  .box .bow{position:absolute;left:50%;top:50%;width:30%;aspect-ratio:2/1;translate:-50% -50%}
-  .box .tag{
-    position:absolute;right:6%;bottom:12%;background:#f7efe0;color:#5a2e1c;font-size:8px;font-weight:700;
-    padding:1px 4px;border-radius:2px;letter-spacing:.3px
-  }
-
-  .base{
-    position:relative;z-index:2;width:100%;height:84px;margin-top:-1px;
-    background:linear-gradient(180deg,var(--body1),var(--body2) 60%,var(--body3));
-    border-radius:8px 8px 12px 12px;
-    box-shadow:0 22px 30px -20px rgba(0,0,0,.45),0 1px 0 #fff inset;
-  }
-  .base .badge{position:absolute;left:14px;top:14px;height:16px}
-  .base .badge svg{height:100%;width:auto;display:block}
-  .base .led{position:absolute;right:16px;top:19px;width:7px;height:7px;border-radius:50%;background:#2ecc71;box-shadow:0 0 6px #2ecc71}
-  .base .led.busy{animation:blink .25s steps(2) infinite;background:#f5a623;box-shadow:0 0 6px #f5a623}
+  /* Händler-Kleber auf dem Sockel */
+  .sticker{left:4.4%;top:87.6%;width:17%;background:#fff;border-radius:3px;padding:.6% 1%;box-shadow:0 1px 2px rgba(0,0,0,.4)}
+  .sticker img{width:100%;height:auto;display:block}
+  .led{left:88.4%;top:6.6%;width:1.7%;aspect-ratio:1;border-radius:50%;background:#2ecc71;box-shadow:0 0 5px #2ecc71;z-index:3}
+  .led.busy{animation:blink .25s steps(2) infinite;background:#f5a623;box-shadow:0 0 5px #f5a623}
   @keyframes blink{50%{opacity:.25}}
-  .base .slot{
-    position:absolute;left:5%;right:5%;bottom:10px;height:11px;border-radius:3px;
-    background:linear-gradient(180deg,#0b0d0f,#2a3036);
-    box-shadow:0 1px 0 #fff;
-  }
+  /* Etiketten-Ausgabe (Mess-Punkt) */
+  .slot{left:77.2%;top:11.43%;width:13.33%;height:.95%}
 
-  /* ---------- Etikette ---------- */
-  .label-wrap{
-    position:relative;width:86%;height:0;overflow:hidden;margin-top:-10px;z-index:1;
-  }
-  .label-wrap.done{overflow:visible}
+  /* ================= Etikette ================= */
+  .final{position:relative;height:0;margin-top:22px;transition:height .9s ease}
   .label{
-    position:absolute;left:0;right:0;bottom:0;
-    background:#fffdf8;color:#151515;
-    padding:16px 16px 14px;
-    box-shadow:0 1px 0 rgba(0,0,0,.05), 0 10px 22px -10px rgba(0,0,0,.35);
-    border-radius:0 0 10px 10px;
-    transform-origin:50% 0;
+    position:absolute;left:0;top:0;width:100%;
+    background:#fffdf8;color:#151515;padding:16px 16px 14px;
+    box-shadow:0 1px 0 rgba(0,0,0,.05),0 10px 22px -10px rgba(0,0,0,.35);
+    border-radius:4px;transform-origin:0 0;visibility:hidden;z-index:10;
   }
-  .label-wrap.done .label{animation:lift .6s ease forwards}
-  @keyframes lift{to{transform:rotate(-1.2deg) translateY(6px);box-shadow:0 22px 40px -16px rgba(0,0,0,.45)}}
-  .label::before{ /* Abrisskante oben */
-    content:"";position:absolute;left:0;right:0;top:-1px;height:6px;
-    background:radial-gradient(circle at 4px 0,transparent 3px,#fffdf8 3.5px) 0 0/8px 6px repeat-x;
-    opacity:0;
-  }
-  .l-logo svg{width:44%;height:auto;display:block}
+  .label.fly{transition:transform 1s cubic-bezier(.5,0,.2,1),box-shadow 1s,border-radius 1s}
+  .label.placed{box-shadow:0 22px 40px -18px rgba(0,0,0,.45);border-radius:8px}
   .l-head{display:flex;justify-content:space-between;align-items:flex-start;gap:10px;padding-bottom:12px;border-bottom:2px solid #151515}
-  .l-head .meta{white-space:nowrap;font-size:10px;text-align:right;line-height:1.35;color:#444}
+  .l-head img{width:44%;height:auto;display:block}
+  .l-head .meta{font-size:10px;text-align:right;line-height:1.35;color:#444;white-space:nowrap}
   .l-art{font-weight:900;font-size:22px;letter-spacing:.3px;margin:12px 0 0;line-height:1.1;text-transform:uppercase}
   .l-sub{font-size:13px;color:#444;margin-top:3px}
   .l-hero{display:grid;grid-template-columns:42% 1fr;gap:14px;align-items:center;margin:14px 0 12px}
-  .l-hero img{width:100%;height:auto;aspect-ratio:1;object-fit:cover;border-radius:6px;display:block;filter:saturate(.92) contrast(1.03)}
+  .l-hero img{width:100%;height:auto;aspect-ratio:1;object-fit:cover;border-radius:6px;display:block}
   .l-thanks{font-size:clamp(30px,10vw,46px);font-weight:900;line-height:.95;margin:0;letter-spacing:-1px}
   .l-thanks span{display:block;height:6px;width:70%;background:var(--red);margin-top:8px}
   .l-text p{font-size:15px;line-height:1.5;margin:0 0 .75em;hyphens:auto;-webkit-hyphens:auto}
@@ -214,121 +116,151 @@
   .l-code .digits{font-family:ui-monospace,Menlo,Consolas,monospace;font-size:12px;letter-spacing:3px;margin-top:2px}
   .l-foot{text-align:center;font-size:10px;color:#555;margin-top:10px;line-height:1.4}
 
-  /* ---------- danach ---------- */
-  .after{margin-top:42px;text-align:center;opacity:0;transform:translateY(16px);transition:opacity .7s,transform .7s}
+  /* ================= danach ================= */
+  .after{margin-top:40px;text-align:center;opacity:0;transform:translateY(16px);transition:opacity .7s,transform .7s}
   .after.show{opacity:1;transform:none}
-  .after img{width:100%;border-radius:14px;display:block;box-shadow:0 14px 30px -14px rgba(0,0,0,.45)}
+  .pic{display:block;position:relative;border:0;padding:0;background:none;width:100%;cursor:zoom-in;border-radius:14px;overflow:hidden;box-shadow:0 14px 30px -14px rgba(0,0,0,.45)}
+  .pic img{width:100%;height:auto;display:block}
+  .pic .zoom{position:absolute;right:10px;bottom:10px;background:rgba(0,0,0,.6);color:#fff;font-size:13px;font-weight:600;padding:6px 10px;border-radius:999px}
   .after h3{font-size:22px;margin:18px 0 4px}
   .after p{margin:0 0 18px;color:#4a545d;font-size:15px}
   .btns{display:flex;gap:10px;justify-content:center;flex-wrap:wrap}
-  .btn{border:0;border-radius:999px;padding:12px 20px;font:inherit;font-weight:700;font-size:15px;cursor:pointer;background:#fff;color:var(--ink);box-shadow:0 2px 8px rgba(0,0,0,.12)}
+  .btn{border:0;border-radius:999px;padding:12px 20px;font:inherit;font-weight:700;font-size:15px;cursor:pointer;background:#fff;color:var(--ink);box-shadow:0 2px 8px rgba(0,0,0,.12);text-decoration:none}
   .btn.primary{background:var(--ink);color:#fff}
 
-  #confetti{position:fixed;inset:0;pointer-events:none;z-index:50}
+  .lightbox{position:fixed;inset:0;z-index:100;background:rgba(10,12,14,.94);display:flex;flex-direction:column;align-items:center;justify-content:center;padding:16px;gap:14px;opacity:0;pointer-events:none;transition:opacity .25s}
+  .lightbox.open{opacity:1;pointer-events:auto}
+  .lightbox img{max-width:100%;max-height:78svh;width:auto;height:auto;border-radius:8px;display:block}
+  .lightbox .lb-close{position:absolute;top:max(12px,env(safe-area-inset-top));right:12px;width:42px;height:42px;border-radius:50%;border:0;background:rgba(255,255,255,.15);color:#fff;font-size:24px;line-height:42px;cursor:pointer}
+  .lightbox .lb-tip{color:#cfd5da;font-size:13px;text-align:center}
+  .lightbox .btn{background:#fff}
 
-  @media (min-width:700px){ main{padding-top:40px} }
-  @media (prefers-reduced-motion:reduce){ .ok.pulse::before{animation:none} }
+  #confetti{position:fixed;inset:0;pointer-events:none;z-index:50}
+  @media (prefers-reduced-motion:reduce){.ok.pulse::before{animation:none}}
 </style>
 </head>
 <body>
 <canvas id="confetti"></canvas>
 
-<svg width="0" height="0" style="position:absolute" aria-hidden="true">
-  <symbol id="logo" viewBox="0 0 176 73">
-    <rect x="106" y="0" width="70" height="7.6" fill="#EF2B2F"/>
-    <rect x="0" y="8" width="71" height="8" fill="#EF2B2F"/>
-    <text x="0" y="52.6" textLength="176" lengthAdjust="spacingAndGlyphs" font-family="'Helvetica Neue',Helvetica,Arial,sans-serif" font-weight="800" font-size="38.5" fill="#1F1F1D">OBRECHT</text>
-    <text x="0.5" y="72.6" textLength="175" lengthAdjust="spacingAndGlyphs" font-family="'Helvetica Neue',Helvetica,Arial,sans-serif" font-weight="500" font-size="15.2" fill="#1F1F1D">WAAGEN SYSTEME</text>
-  </symbol>
-</svg>
-
 <main>
   <p class="hint" id="hint">46 Jahre – sauber gewogen.<br>Tippe auf <b>OK</b> und die Waage druckt deine Etikette.</p>
 
-  <section class="scale" aria-label="Waage">
-    <div class="tower">
-      <div class="screen">
-        <div class="s-bar">
-          <svg viewBox="0 0 176 73" role="img" aria-label="Obrecht Waagen Systeme"><use href="#logo"/></svg>
-          <span id="clock">--:--</span>
-        </div>
-        <div class="s-main">
-          <div class="s-art"><span class="stable" id="stable">▸0◂</span><span id="art">Pralinen «46 Jahre Obrecht»</span></div>
-          <div class="s-weight" id="weight">0.000</div>
-          <div class="s-unit">Jahre</div>
-        </div>
-        <div class="s-row">
-          <div><small>Preis / Jahr</small><strong>unbezahlbar</strong></div>
-          <div><small>Total</small><strong>DANKE</strong></div>
-        </div>
-        <div class="s-tiles" id="tiles">
-          <button class="tile sel" data-art="Pralinen «46 Jahre Obrecht»"><span>🍫</span>Pralinen</button>
-          <button class="tile" data-art="Velotouren, unbegrenzt"><span>🚲</span>Velo</button>
-          <button class="tile" data-art="Weisswein, gut gekühlt"><span>🥂</span>Wein</button>
-          <button class="tile" data-art="Berge & Ruhestand"><span>🏔️</span>Berge</button>
-        </div>
-        <div class="s-actions">
-          <button class="c" type="button" tabindex="-1" aria-hidden="true">C</button>
-          <button class="ok" id="ok" disabled>OK</button>
-        </div>
-        <div class="s-status" id="status">Etikette wird gedruckt …</div>
+  <section class="scale" id="scale" aria-label="Waage Bizerba KH II 800 Pro">
+    <svg class="body" viewBox="0 0 360 420" aria-hidden="true">
+      <defs>
+        <linearGradient id="anth" x1="0" x2="1"><stop offset="0" stop-color="#3a3f45"/><stop offset=".55" stop-color="#2b3035"/><stop offset="1" stop-color="#1e2226"/></linearGradient>
+        <linearGradient id="anthV" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#2e3338"/><stop offset="1" stop-color="#1b1e21"/></linearGradient>
+        <linearGradient id="steelTop" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#6f777f"/><stop offset=".45" stop-color="#9aa2a9"/><stop offset="1" stop-color="#5d656c"/></linearGradient>
+        <linearGradient id="steelFront" x1="0" x2="1"><stop offset="0" stop-color="#d6dbdf"/><stop offset=".35" stop-color="#ffffff"/><stop offset=".7" stop-color="#c3c9ce"/><stop offset="1" stop-color="#e9ecee"/></linearGradient>
+        <linearGradient id="bezel" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#2a2e33"/><stop offset="1" stop-color="#111316"/></linearGradient>
+        <radialGradient id="shadow" cx=".5" cy=".5" r=".5"><stop offset="0" stop-color="#000" stop-opacity=".32"/><stop offset="1" stop-color="#000" stop-opacity="0"/></radialGradient>
+      </defs>
+
+      <!-- Bodenschatten -->
+      <ellipse cx="180" cy="408" rx="185" ry="12" fill="url(#shadow)"/>
+
+      <!-- Säule (C-Bogen hinten rechts) -->
+      <path d="M298 6 H334 Q346 6 347 18 L356 368 Q357 394 333 397 H290 V384 Q320 382 320 358 L314 30 Q313 22 298 22 Z" fill="url(#anth)"/>
+      <path d="M340 12 L349 368" stroke="#4a5057" stroke-width="1.4" opacity=".7"/>
+
+      <!-- Sockel -->
+      <path d="M14 344 H328 L344 360 H2 Z" fill="#3b4046"/>
+      <path d="M2 360 H344 Q354 360 354 372 V390 Q354 400 344 400 H12 Q2 400 2 390 Z" fill="url(#anthV)"/>
+      <path d="M8 362 H340" stroke="#4d535a" stroke-width="1"/>
+      <rect x="22" y="400" width="18" height="6" rx="2" fill="#15171a"/>
+      <rect x="306" y="400" width="18" height="6" rx="2" fill="#15171a"/>
+
+      <!-- Wägeplatte + Bügel -->
+      <path d="M48 318 L52 298 H282 L288 318" fill="none" stroke="#7d858c" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round" opacity=".5" transform="translate(0 2)"/>
+      <path d="M48 318 L52 298 H282 L288 318" fill="none" stroke="#e2e6e9" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/>
+      <path d="M36 318 H294 L310 342 H20 Z" fill="url(#steelTop)"/>
+      <path d="M46 321 H286 L298 338 H32 Z" fill="#848c93" opacity=".55"/>
+      <path d="M20 342 H310 V352 Q310 355 307 355 H23 Q20 355 20 352 Z" fill="url(#steelFront)"/>
+
+      <!-- Display-Gehäuse -->
+      <rect x="2" y="14" width="264" height="200" rx="7" fill="url(#bezel)"/>
+      <path d="M266 20 L273 25 V205 L266 210 Z" fill="#0d0f11"/>
+      <rect x="266" y="44" width="10" height="20" rx="2" fill="#1d2024"/>
+      <rect x="236" y="208" width="24" height="3" rx="1" fill="#5a6168" opacity=".8"/>
+
+      <!-- Drucker an der Säule -->
+      <rect x="272" y="18" width="62" height="212" rx="6" fill="url(#anth)"/>
+      <rect x="272" y="18" width="5" height="212" rx="2" fill="#454b52" opacity=".7"/>
+      <rect x="277" y="24" width="52" height="22" rx="3" fill="#202428"/>
+      <g stroke="#3b4147" stroke-width="2">
+        <line x1="285" y1="27" x2="285" y2="43"/><line x1="293" y1="27" x2="293" y2="43"/><line x1="301" y1="27" x2="301" y2="43"/>
+        <line x1="309" y1="27" x2="309" y2="43"/><line x1="317" y1="27" x2="317" y2="43"/>
+      </g>
+      <rect x="278" y="48" width="50" height="4" rx="1" fill="#07080a"/>
+      <path d="M278 52.5 H328" stroke="#5f666d" stroke-width=".8"/>
+      <rect x="290" y="212" width="26" height="3" rx="1.5" fill="#1a1d20"/>
+    </svg>
+
+    <div class="pos screen" id="screen">
+      <div class="s-bar"><img src="img/logo.png" alt="Obrecht Waagen Systeme"><span id="clock">--:--</span></div>
+      <div class="s-main">
+        <div class="s-art"><span class="stable" id="stable">▸0◂</span><span id="art">Lindor Kugeln «46 Jahre Obrecht»</span></div>
+        <div class="s-weight" id="weight">0.000</div>
+        <div class="s-unit">Jahre</div>
       </div>
+      <div class="s-row">
+        <div><small>Preis / Jahr</small><strong>unbezahlbar</strong></div>
+        <div><small>Total</small><strong>DANKE</strong></div>
+      </div>
+      <div class="s-tiles" id="tiles">
+        <button class="tile sel" data-art="Lindor Kugeln «46 Jahre Obrecht»"><span class="ic"><img src="img/lindor.png" alt=""></span>Lindor</button>
+        <button class="tile" data-art="Velotouren, unbegrenzt"><span class="ic">🚲</span>Velo</button>
+        <button class="tile" data-art="Weisswein, gut gekühlt"><span class="ic">🥂</span>Wein</button>
+        <button class="tile" data-art="Berge &amp; Ruhestand"><span class="ic">🏔️</span>Berge</button>
+      </div>
+      <div class="s-actions">
+        <button class="c" type="button" tabindex="-1" aria-hidden="true">C</button>
+        <button class="ok" id="ok" disabled>OK</button>
+      </div>
+      <div class="s-status" id="status"><span id="statusText">Etikette wird gedruckt …</span><div class="s-prog" id="prog"></div></div>
     </div>
-    <div class="neck"></div>
 
-    <div class="deck">
-      <div class="plate">
-      <div class="platter"></div>
-      <div class="box" id="box" aria-hidden="true">
-        <div class="lid"></div><div class="rib-v"></div><div class="rib-h"></div>
-        <svg class="bow" viewBox="0 0 40 20"><path d="M20 10 C10 0 2 2 4 10 C2 18 10 20 20 10 Z M20 10 C30 0 38 2 36 10 C38 18 30 20 20 10 Z" fill="#EF2B2F" stroke="#b5161b" stroke-width="1"/><circle cx="20" cy="10" r="3.2" fill="#c91d22"/></svg>
-        <div class="tag">PRALINEN</div>
-      </div>
-      </div>
-      <div class="platter-edge"></div>
-      <div class="base">
-        <div class="badge"><svg viewBox="0 0 176 73" aria-hidden="true"><use href="#logo"/></svg></div>
-        <div class="led" id="led"></div>
-        <div class="slot"></div>
-      </div>
-
-      <div class="label-wrap" id="wrap">
-        <article class="label" id="label" aria-live="polite">
-          <div class="l-head">
-            <div class="l-logo"><svg viewBox="0 0 176 73" role="img" aria-label="Obrecht Waagen Systeme"><use href="#logo"/></svg></div>
-            <div class="meta">Abgepackt<br><b id="today">–</b></div>
-          </div>
-          <div class="l-art">46 Jahre Obrecht</div>
-          <div class="l-sub">ausgewogen seit 1980</div>
-
-          <div class="l-hero">
-            <img src="img/walter.jpg" alt="Walter Obrecht" width="640" height="640">
-            <h2 class="l-thanks">Danke!<span></span></h2>
-          </div>
-
-          <div class="l-text">
-            <p>Nach über 46 Jahren ausgewogener Tätigkeiten in der Firma Obrecht Technologie AG, davon die letzten 19 Jahre als Teil des ITRIS Konzerns, bin ich ab dem 1. Januar 2027 «Pensionär» und nicht mehr Geschäftsführer.</p>
-            <p>Ein ganz grosses Dankeschön für deine grosse Wertschätzung und die beste Zusammenarbeit in all den Jahren. Nur so war es möglich, x tausende von Projekten erfolgreich umzusetzen.</p>
-            <p>Ich wünsche dir für die kommenden Feiertage schöne Momente, einen guten Rutsch ins neue Jahr 2027 und für die Zukunft beste Gesundheit und viel Freude und Erfolge bei deinen beruflichen und privaten Tätigkeiten.</p>
-          </div>
-          <div class="l-sign">Mit lieben Grüssen<span class="script">Walter Obrecht</span></div>
-
-          <table class="l-data">
-            <tr><td>Gewicht</td><td>46 Jahre</td></tr>
-            <tr><td>Davon im ITRIS Konzern</td><td>19 Jahre</td></tr>
-            <tr><td>Pensionär ab</td><td>01.01.2027</td></tr>
-            <tr><td>Preis / Jahr</td><td>unbezahlbar</td></tr>
-          </table>
-          <div class="l-total"><span>TOTAL</span><b>DANKE</b></div>
-          <div class="l-code"><svg id="barcode" viewBox="0 0 113 40" preserveAspectRatio="none" aria-hidden="true"></svg><div class="digits" id="digits"></div></div>
-          <div class="l-foot">Obrecht Technologie AG · Spreitenbach</div>
-        </article>
-      </div>
-    </div>
+    <img class="pos lindor" id="lindor" src="img/lindor.png" alt="" aria-hidden="true" width="520" height="258">
+    <div class="pos sticker"><img src="img/logo.png" alt=""></div>
+    <div class="pos led" id="led"></div>
+    <div class="pos slot" id="slot"></div>
   </section>
 
+  <div class="final" id="final">
+    <article class="label" id="label" aria-live="polite">
+      <div class="l-head">
+        <img src="img/logo.png" alt="Obrecht Waagen Systeme">
+        <div class="meta">Abgepackt<br><b id="today">–</b></div>
+      </div>
+      <div class="l-art">46 Jahre Obrecht</div>
+      <div class="l-sub">ausgewogen seit 1980</div>
+      <div class="l-hero">
+        <img src="img/walter.jpg" alt="Walter Obrecht" width="640" height="640">
+        <h2 class="l-thanks">Danke!<span></span></h2>
+      </div>
+      <div class="l-text">
+        <p>Nach über 46 Jahren ausgewogener Tätigkeiten in der Firma Obrecht Technologie AG, davon die letzten 19 Jahre als Teil des ITRIS Konzerns, bin ich ab dem 1. Januar 2027 «Pensionär» und nicht mehr Geschäftsführer.</p>
+        <p>Ein ganz grosses Dankeschön für deine grosse Wertschätzung und die beste Zusammenarbeit in all den Jahren. Nur so war es möglich, x tausende von Projekten erfolgreich umzusetzen.</p>
+        <p>Ich wünsche dir für die kommenden Feiertage schöne Momente, einen guten Rutsch ins neue Jahr 2027 und für die Zukunft beste Gesundheit und viel Freude und Erfolge bei deinen beruflichen und privaten Tätigkeiten.</p>
+      </div>
+      <div class="l-sign">Mit lieben Grüssen<span class="script">Walter Obrecht</span></div>
+      <table class="l-data">
+        <tr><td>Gewicht</td><td>46 Jahre</td></tr>
+        <tr><td>Davon im ITRIS Konzern</td><td>19 Jahre</td></tr>
+        <tr><td>Pensionär ab</td><td>01.01.2027</td></tr>
+        <tr><td>Preis / Jahr</td><td>unbezahlbar</td></tr>
+      </table>
+      <div class="l-total"><span>TOTAL</span><b>DANKE</b></div>
+      <div class="l-code"><svg id="barcode" viewBox="0 0 113 40" preserveAspectRatio="none" aria-hidden="true"></svg><div class="digits" id="digits"></div></div>
+      <div class="l-foot">Obrecht Technologie AG · Spreitenbach</div>
+    </article>
+  </div>
+
   <section class="after" id="after" hidden>
-    <img src="img/ruhestand.jpg" alt="Karikatur: Walter auf dem Velo mit einem Glas Weisswein vor Alpenpanorama, daneben eine Waage und ein Schild «Walter – Ruhestand!»" width="1400" height="594" loading="lazy">
+    <button class="pic" id="pic" aria-label="Bild gross anzeigen">
+      <img src="img/ruhestand.jpg" alt="Karikatur: Walter auf dem Velo mit einem Glas Weisswein vor Alpenpanorama, daneben eine Waage und ein Schild «Walter – Ruhestand!»" width="1400" height="594" loading="lazy">
+      <span class="zoom">🔍 Antippen</span>
+    </button>
     <h3>Ab 2027: Ruhestand!</h3>
     <p>Und beim Einkaufen schaut er bestimmt trotzdem, welche Waagen im Laden stehen …</p>
     <div class="btns">
@@ -338,135 +270,156 @@
   </section>
 </main>
 
+<div class="lightbox" id="lightbox" role="dialog" aria-modal="true" aria-label="Karikatur gross">
+  <button class="lb-close" id="lbClose" aria-label="Schliessen">×</button>
+  <img src="img/ruhestand.jpg" alt="Karikatur Walter Obrecht im Ruhestand">
+  <div class="lb-tip">Tipp: Handy quer halten oder mit zwei Fingern zoomen</div>
+  <a class="btn" href="img/ruhestand.jpg" target="_blank" rel="noopener">Bild in voller Grösse öffnen</a>
+</div>
+
 <script>
 (() => {
   const $ = id => document.getElementById(id);
   const reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
-  const ok = $('ok'), wrap = $('wrap'), label = $('label');
+  const ok=$('ok'), label=$('label'), fin=$('final');
+  const PRINT_MS = reduce ? 400 : 9000;
 
-  /* Uhrzeit + Datum */
-  const pad = n => String(n).padStart(2,'0');
-  const tick = () => { const d = new Date(); $('clock').textContent = pad(d.getHours())+':'+pad(d.getMinutes()); };
-  tick(); setInterval(tick, 15000);
-  const d = new Date(); $('today').textContent = pad(d.getDate())+'.'+pad(d.getMonth()+1)+'.'+d.getFullYear();
+  const pad=n=>String(n).padStart(2,'0');
+  const tick=()=>{const d=new Date();$('clock').textContent=pad(d.getHours())+':'+pad(d.getMinutes());};
+  tick(); setInterval(tick,15000);
+  {const d=new Date();$('today').textContent=pad(d.getDate())+'.'+pad(d.getMonth()+1)+'.'+d.getFullYear();}
 
-  /* EAN-13 (Präfix 2 = Waagen-Etikette im Laden) */
-  (function ean(code12){
-    const s = code12.split('').map(Number);
-    const sum = s.reduce((a,v,i)=>a+v*(i%2?3:1),0);
-    const full = code12 + ((10 - sum%10)%10);
+  /* EAN-13 (Präfix 2 = Waagen-Etikette) */
+  (function(code12){
+    const s=code12.split('').map(Number), sum=s.reduce((a,v,i)=>a+v*(i%2?3:1),0), full=code12+((10-sum%10)%10);
     const L=['0001101','0011001','0010011','0111101','0100011','0110001','0101111','0111011','0110111','0001011'];
     const G=['0100111','0110011','0011011','0100001','0011101','0111001','0000101','0010001','0001001','0010111'];
     const R=['1110010','1100110','1101100','1000010','1011100','1001110','1010000','1000100','1001000','1110100'];
     const P=['LLLLLL','LLGLGG','LLGGLG','LLGGGL','LGLLGG','LGGLLG','LGGGLL','LGLGLG','LGLGGL','LGGLGL'];
-    const f=+full[0], par=P[f]; let bits='101';
-    for(let i=1;i<=6;i++) bits += (par[i-1]==='L'?L:G)[+full[i]];
-    bits += '01010';
-    for(let i=7;i<=12;i++) bits += R[+full[i]];
-    bits += '101';
-    let x=8, out='';
-    const guard = new Set([0,1,2,45,46,47,48,49,92,93,94]);
-    for(let i=0;i<bits.length;i++){ if(bits[i]==='1') out+=`<rect x="${x+i}" y="0" width="1" height="${guard.has(i)?40:34}" fill="#151515"/>`; }
-    $('barcode').innerHTML = out;
-    $('digits').textContent = full[0]+'  '+full.slice(1,7)+'  '+full.slice(7);
+    const par=P[+full[0]]; let bits='101';
+    for(let i=1;i<=6;i++) bits+=(par[i-1]==='L'?L:G)[+full[i]];
+    bits+='01010'; for(let i=7;i<=12;i++) bits+=R[+full[i]]; bits+='101';
+    const guard=new Set([0,1,2,45,46,47,48,49,92,93,94]); let out='';
+    for(let i=0;i<bits.length;i++) if(bits[i]==='1') out+=`<rect x="${8+i}" y="0" width="1" height="${guard.has(i)?40:34}" fill="#151515"/>`;
+    $('barcode').innerHTML=out; $('digits').textContent=full[0]+'  '+full.slice(1,7)+'  '+full.slice(7);
   })('219802026046');
 
   /* Sound */
   let ac;
-  const audio = () => { try{ ac = ac || new (window.AudioContext||window.webkitAudioContext)(); if(ac.state==='suspended') ac.resume(); }catch(e){} return ac; };
-  function beep(f=1250, t=.09){
-    const a = ac; if(!a) return;
-    const o=a.createOscillator(), g=a.createGain(); o.type='square'; o.frequency.value=f;
+  const audio=()=>{try{ac=ac||new (window.AudioContext||window.webkitAudioContext)();if(ac.state==='suspended')ac.resume();}catch(e){}return ac;};
+  function beep(f=1250,t=.09){
+    const a=ac; if(!a) return;
+    const o=a.createOscillator(),g=a.createGain(); o.type='square'; o.frequency.value=f;
     g.gain.setValueAtTime(.0001,a.currentTime); g.gain.exponentialRampToValueAtTime(.08,a.currentTime+.005);
     g.gain.exponentialRampToValueAtTime(.0001,a.currentTime+t);
     o.connect(g).connect(a.destination); o.start(); o.stop(a.currentTime+t+.02);
   }
   function printerSound(dur){
-    const a = audio(); if(!a) return;
-    const len = Math.floor(a.sampleRate*dur), buf = a.createBuffer(1,len,a.sampleRate), ch = buf.getChannelData(0);
-    for(let i=0;i<len;i++){ const t=i/a.sampleRate; const step = (Math.sin(2*Math.PI*38*t)>0.2)?1:0.35; ch[i]=(Math.random()*2-1)*step; }
+    const a=ac; if(!a) return; const n=a.currentTime;
+    const len=Math.floor(a.sampleRate*dur), buf=a.createBuffer(1,len,a.sampleRate), ch=buf.getChannelData(0);
+    for(let i=0;i<len;i++){const t=i/a.sampleRate; const step=(Math.sin(2*Math.PI*34*t)>0.1)?1:.3; const line=(Math.sin(2*Math.PI*4.5*t)>-.85)?1:.15; ch[i]=(Math.random()*2-1)*step*line;}
     const src=a.createBufferSource(); src.buffer=buf;
-    const bp=a.createBiquadFilter(); bp.type='bandpass'; bp.frequency.value=2600; bp.Q.value=1.4;
-    const g=a.createGain(); const n=a.currentTime;
-    g.gain.setValueAtTime(.0001,n); g.gain.exponentialRampToValueAtTime(.16,n+.05);
-    g.gain.setValueAtTime(.16,n+dur-.12); g.gain.exponentialRampToValueAtTime(.0001,n+dur);
-    src.connect(bp).connect(g).connect(a.destination); src.start();
+    const bp=a.createBiquadFilter(); bp.type='bandpass'; bp.frequency.value=2400; bp.Q.value=1.2;
+    const g=a.createGain();
+    g.gain.setValueAtTime(.0001,n); g.gain.exponentialRampToValueAtTime(.13,n+.08);
+    g.gain.setValueAtTime(.13,n+dur-.15); g.gain.exponentialRampToValueAtTime(.0001,n+dur);
+    src.connect(bp).connect(g).connect(a.destination); src.start(n);
+    const o=a.createOscillator(), lp=a.createBiquadFilter(), og=a.createGain();
+    o.type='sawtooth'; o.frequency.setValueAtTime(380,n); o.frequency.linearRampToValueAtTime(420,n+dur);
+    lp.type='lowpass'; lp.frequency.value=900;
+    og.gain.setValueAtTime(.0001,n); og.gain.exponentialRampToValueAtTime(.025,n+.1);
+    og.gain.setValueAtTime(.025,n+dur-.15); og.gain.exponentialRampToValueAtTime(.0001,n+dur);
+    o.connect(lp).connect(og).connect(a.destination); o.start(n); o.stop(n+dur+.05);
   }
-  const buzz = p => { try{ navigator.vibrate && navigator.vibrate(p); }catch(e){} };
+  const buzz=p=>{try{navigator.vibrate&&navigator.vibrate(p);}catch(e){}};
 
-  /* Gewicht einpendeln */
   function settle(){
-    const target=46, el=$('weight'); const t0=performance.now(), D=reduce?10:1500;
-    function f(now){
-      const p=Math.min(1,(now-t0)/D);
-      const v = p<1 ? target*(1 - Math.exp(-6*p)*Math.cos(14*p)) : target;
-      el.textContent = Math.max(0,v).toFixed(3);
-      if(p<1) requestAnimationFrame(f); else { $('stable').classList.add('on'); ok.disabled=false; ok.classList.add('pulse'); beep(1800,.05); }
-    }
-    requestAnimationFrame(f);
+    const el=$('weight'), t0=performance.now(), D=reduce?10:1500;
+    (function f(now){
+      const p=Math.min(1,(now-t0)/D), v=p<1?46*(1-Math.exp(-6*p)*Math.cos(14*p)):46;
+      el.textContent=Math.max(0,v).toFixed(3);
+      if(p<1) requestAnimationFrame(f); else {$('stable').classList.add('on'); ok.disabled=false; ok.classList.add('pulse'); beep(1800,.05);}
+    })(t0);
   }
-  const box = $('box');
-  setTimeout(()=>{ box.classList.add('drop'); setTimeout(settle, reduce?0:650); }, reduce?0:500);
+  setTimeout(()=>{$('lindor').classList.add('drop'); setTimeout(settle,reduce?0:700);}, reduce?0:500);
 
-  /* Artikel-Tasten */
-  $('tiles').addEventListener('click', e => {
-    const b = e.target.closest('.tile'); if(!b) return;
-    document.querySelectorAll('.tile').forEach(t=>t.classList.toggle('sel', t===b));
-    $('art').textContent = b.dataset.art; beep(1500,.04);
+  $('tiles').addEventListener('click',e=>{
+    const b=e.target.closest('.tile'); if(!b) return;
+    document.querySelectorAll('.tile').forEach(t=>t.classList.toggle('sel',t===b));
+    $('art').textContent=b.dataset.art; audio(); beep(1500,.04);
   });
 
-  /* Drucken */
+  /* Drucken: Etikette kommt oben aus dem Drucker an der Säule */
   let printing=false;
+  function geom(){
+    const sr=$('slot').getBoundingClientRect(), fr=fin.getBoundingClientRect();
+    const W=label.offsetWidth, H=label.offsetHeight, s=sr.width/W;
+    return {s,W,H,x:sr.left-fr.left,y:sr.top-fr.top};
+  }
   function print(){
     if(printing) return; printing=true;
-    ok.disabled=true; ok.classList.remove('pulse');
-    $('hint').classList.add('hide');
     audio(); beep(); buzz(30);
+    ok.disabled=true; ok.classList.remove('pulse'); $('hint').classList.add('hide');
     $('status').classList.add('show'); $('led').classList.add('busy');
-    wrap.classList.remove('done'); wrap.style.height='0px';
+    $('statusText').textContent='Etikette wird gedruckt …';
+    label.classList.remove('fly','placed'); label.style.visibility='visible';
+    fin.style.height='0px';
 
-    const H = label.offsetHeight + 8;
-    const D = reduce ? 300 : Math.min(4200, Math.max(2600, H*3.4));
-    setTimeout(()=>{ printerSound(D/1000); buzz([40,60,40,60,40,60,40,60,40,60,40,60,40,60,40]); }, 180);
+    setTimeout(()=>{
+      printerSound(PRINT_MS/1000);
+      const pat=[]; for(let t=0;t<PRINT_MS;t+=100) pat.push(35,65); buzz(pat);
+    },150);
 
-    const t0 = performance.now()+180;
-    function step(now){
-      const p = Math.max(0, Math.min(1,(now-t0)/D));
-      const h = Math.round(H*p/5)*5;           // ruckelnder Vorschub wie beim Thermodrucker
-      wrap.style.height = h+'px';
-      const r = wrap.getBoundingClientRect();
-      const want = r.top + h + 80 - innerHeight;
-      if(want>0 && p<1) scrollBy(0, Math.min(want, 30));
-      if(p<1) requestAnimationFrame(step); else finish();
-    }
-    requestAnimationFrame(step);
+    const t0=performance.now()+150;
+    (function step(now){
+      const g=geom(), p=Math.max(0,Math.min(1,(now-t0)/PRINT_MS));
+      const q=Math.round(p*g.H/4)*4/g.H;
+      const ty=g.y-(1-q)*g.H*g.s;
+      label.style.transform=`translate(${g.x}px,${ty}px) scale(${g.s})`;
+      label.style.clipPath=`inset(${(1-q)*100}% 0 0 0)`;
+      $('prog').style.width=(p*100)+'%';
+      if(p<1) requestAnimationFrame(step); else done();
+    })(t0);
   }
-  function finish(){
-    wrap.style.height = (label.offsetHeight+8)+'px';
-    wrap.classList.add('done');
-    $('status').textContent='Etikette gedruckt ✓';
-    $('led').classList.remove('busy');
+  function done(){
+    $('led').classList.remove('busy'); $('statusText').textContent='Etikette gedruckt ✓';
     beep(1700,.06); setTimeout(()=>beep(2100,.08),110); buzz(80);
-    confetti();
-    const after=$('after'); after.hidden=false; requestAnimationFrame(()=>after.classList.add('show'));
-    label.scrollIntoView({behavior: reduce?'auto':'smooth', block:'start'});
-    setTimeout(()=>{ $('status').classList.remove('show'); setTimeout(()=>$('status').textContent='Etikette wird gedruckt …',400); printing=false; ok.disabled=false; }, 2200);
+    setTimeout(()=>{
+      const H=label.offsetHeight;
+      fin.style.height=H+'px';
+      label.style.clipPath='none';
+      label.classList.add('fly','placed');
+      requestAnimationFrame(()=>{label.style.transform='translate(0,0) scale(1)';});
+      setTimeout(()=>fin.scrollIntoView({behavior:reduce?'auto':'smooth',block:'start'}),reduce?0:350);
+      confetti();
+      const after=$('after'); after.hidden=false; setTimeout(()=>after.classList.add('show'),900);
+      setTimeout(()=>{$('status').classList.remove('show');$('prog').style.width='0';printing=false;ok.disabled=false;},1800);
+    }, reduce?0:700);
   }
-  ok.addEventListener('click', print);
-  $('again').addEventListener('click', ()=>{ scrollTo({top:0,behavior:reduce?'auto':'smooth'}); setTimeout(print, reduce?0:650); });
+  ok.addEventListener('click',print);
+  $('again').addEventListener('click',()=>{
+    label.style.visibility='hidden'; fin.style.height='0px';
+    scrollTo({top:0,behavior:reduce?'auto':'smooth'}); setTimeout(print,reduce?0:700);
+  });
+  addEventListener('resize',()=>{ if(!printing && label.classList.contains('placed')) fin.style.height=label.offsetHeight+'px'; });
+
+  const lb=$('lightbox');
+  $('pic').addEventListener('click',()=>lb.classList.add('open'));
+  $('lbClose').addEventListener('click',()=>lb.classList.remove('open'));
+  lb.addEventListener('click',e=>{ if(e.target===lb||e.target.tagName==='IMG') lb.classList.remove('open'); });
+  addEventListener('keydown',e=>{ if(e.key==='Escape') lb.classList.remove('open'); });
 
   if(navigator.share){
     const s=$('share'); s.hidden=false;
-    s.addEventListener('click', ()=>navigator.share({title:'Danke! – Walter Obrecht', text:'46 Jahre Obrecht Waagen – ein Dankeschön', url:location.href}).catch(()=>{}));
+    s.addEventListener('click',()=>navigator.share({title:'Danke! – Walter Obrecht',text:'46 Jahre Obrecht Waagen – ein Dankeschön',url:location.href}).catch(()=>{}));
   }
 
-  /* Konfetti in Logo-Farben */
   function confetti(){
     if(reduce) return;
     const c=$('confetti'), x=c.getContext('2d'), dpr=Math.min(2,devicePixelRatio||1);
-    c.width=innerWidth*dpr; c.height=innerHeight*dpr; x.scale(dpr,dpr);
+    c.width=innerWidth*dpr; c.height=innerHeight*dpr; x.setTransform(dpr,0,0,dpr,0,0);
     const cols=['#EF2B2F','#1F1F1D','#ffffff','#c9d0d6','#EF2B2F'];
-    const ps=Array.from({length:110},()=>({x:innerWidth/2+(Math.random()-.5)*80,y:innerHeight*.35,vx:(Math.random()-.5)*9,vy:-Math.random()*11-4,w:5+Math.random()*6,h:3+Math.random()*4,r:Math.random()*6,vr:(Math.random()-.5)*.3,c:cols[Math.random()*cols.length|0]}));
+    const ps=Array.from({length:110},()=>({x:innerWidth/2+(Math.random()-.5)*80,y:innerHeight*.3,vx:(Math.random()-.5)*9,vy:-Math.random()*11-4,w:5+Math.random()*6,h:3+Math.random()*4,r:Math.random()*6,vr:(Math.random()-.5)*.3,c:cols[Math.random()*cols.length|0]}));
     const t0=performance.now();
     (function f(now){
       x.clearRect(0,0,innerWidth,innerHeight);
