@@ -117,11 +117,11 @@
   .l-foot{text-align:center;font-size:10px;color:#555;margin-top:10px;line-height:1.4}
 
   /* ================= danach ================= */
-  .after{margin-top:40px;text-align:center;opacity:0;transform:translateY(16px);transition:opacity .7s,transform .7s}
+  .after{margin-top:34px;text-align:center;opacity:0;transform:translateY(16px);transition:opacity .7s,transform .7s}
   .after.show{opacity:1;transform:none}
-  .pic{display:block;position:relative;border:0;padding:0;background:none;width:100%;cursor:zoom-in;border-radius:14px;overflow:hidden;box-shadow:0 14px 30px -14px rgba(0,0,0,.45)}
+  .pic{display:block;position:relative;border:0;padding:0;background:none;width:100%;cursor:zoom-in;border-radius:6px;overflow:hidden;margin:2px 0 0}
   .pic img{width:100%;height:auto;display:block}
-  .pic .zoom{position:absolute;right:10px;bottom:10px;background:rgba(0,0,0,.6);color:#fff;font-size:13px;font-weight:600;padding:6px 10px;border-radius:999px}
+  .pic .zoom{position:absolute;right:8px;bottom:8px;background:rgba(0,0,0,.6);color:#fff;font-size:12px;font-weight:600;padding:5px 9px;border-radius:999px}
   .after h3{font-size:22px;margin:18px 0 4px}
   .after p{margin:0 0 18px;color:#4a545d;font-size:15px}
   .btns{display:flex;gap:10px;justify-content:center;flex-wrap:wrap}
@@ -251,18 +251,15 @@
         <tr><td>Preis / Jahr</td><td>unbezahlbar</td></tr>
       </table>
       <div class="l-total"><span>TOTAL</span><b>DANKE</b></div>
-      <div class="l-code"><svg id="barcode" viewBox="0 0 113 40" preserveAspectRatio="none" aria-hidden="true"></svg><div class="digits" id="digits"></div></div>
+      <button class="pic" id="pic" aria-label="Karikatur gross anzeigen">
+        <img src="img/ruhestand.jpg" alt="Karikatur: Walter auf dem Velo mit einem Glas Weisswein vor Alpenpanorama, daneben eine Waage und ein Schild «Walter – Ruhestand!»" width="1400" height="594">
+        <span class="zoom">🔍 Antippen</span>
+      </button>
       <div class="l-foot">Obrecht Technologie AG · Spreitenbach</div>
     </article>
   </div>
 
   <section class="after" id="after" hidden>
-    <button class="pic" id="pic" aria-label="Bild gross anzeigen">
-      <img src="img/ruhestand.jpg" alt="Karikatur: Walter auf dem Velo mit einem Glas Weisswein vor Alpenpanorama, daneben eine Waage und ein Schild «Walter – Ruhestand!»" width="1400" height="594" loading="lazy">
-      <span class="zoom">🔍 Antippen</span>
-    </button>
-    <h3>Ab 2027: Ruhestand!</h3>
-    <p>Und beim Einkaufen schaut er bestimmt trotzdem, welche Waagen im Laden stehen …</p>
     <div class="btns">
       <button class="btn primary" id="again">Nochmals drucken</button>
       <button class="btn" id="share" hidden>Teilen</button>
@@ -289,20 +286,6 @@
   tick(); setInterval(tick,15000);
   {const d=new Date();$('today').textContent=pad(d.getDate())+'.'+pad(d.getMonth()+1)+'.'+d.getFullYear();}
 
-  /* EAN-13 (Präfix 2 = Waagen-Etikette) */
-  (function(code12){
-    const s=code12.split('').map(Number), sum=s.reduce((a,v,i)=>a+v*(i%2?3:1),0), full=code12+((10-sum%10)%10);
-    const L=['0001101','0011001','0010011','0111101','0100011','0110001','0101111','0111011','0110111','0001011'];
-    const G=['0100111','0110011','0011011','0100001','0011101','0111001','0000101','0010001','0001001','0010111'];
-    const R=['1110010','1100110','1101100','1000010','1011100','1001110','1010000','1000100','1001000','1110100'];
-    const P=['LLLLLL','LLGLGG','LLGGLG','LLGGGL','LGLLGG','LGGLLG','LGGGLL','LGLGLG','LGLGGL','LGGLGL'];
-    const par=P[+full[0]]; let bits='101';
-    for(let i=1;i<=6;i++) bits+=(par[i-1]==='L'?L:G)[+full[i]];
-    bits+='01010'; for(let i=7;i<=12;i++) bits+=R[+full[i]]; bits+='101';
-    const guard=new Set([0,1,2,45,46,47,48,49,92,93,94]); let out='';
-    for(let i=0;i<bits.length;i++) if(bits[i]==='1') out+=`<rect x="${8+i}" y="0" width="1" height="${guard.has(i)?40:34}" fill="#151515"/>`;
-    $('barcode').innerHTML=out; $('digits').textContent=full[0]+'  '+full.slice(1,7)+'  '+full.slice(7);
-  })('219802026046');
 
   /* Sound */
   let ac;
