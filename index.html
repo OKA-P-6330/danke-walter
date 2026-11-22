@@ -280,9 +280,9 @@
 <script>
 (() => {
   const $ = id => document.getElementById(id);
-  const reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
+  const reduceFx = matchMedia('(prefers-reduced-motion: reduce)').matches; const reduce = false;
   const ok=$('ok'), label=$('label'), fin=$('final');
-  const PRINT_MS = reduce ? 400 : 9000;
+  const PRINT_MS = 3000;
 
   const pad=n=>String(n).padStart(2,'0');
   const tick=()=>{const d=new Date();$('clock').textContent=pad(d.getHours())+':'+pad(d.getMinutes());};
@@ -415,7 +415,7 @@
   }
 
   function confetti(){
-    if(reduce) return;
+    if(reduceFx) return;
     const c=$('confetti'), x=c.getContext('2d'), dpr=Math.min(2,devicePixelRatio||1);
     c.width=innerWidth*dpr; c.height=innerHeight*dpr; x.setTransform(dpr,0,0,dpr,0,0);
     const cols=['#EF2B2F','#1F1F1D','#ffffff','#c9d0d6','#EF2B2F'];
